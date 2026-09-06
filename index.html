@@ -114,10 +114,11 @@
   /* HERO CUTOUT - background-removed portrait embedded in the animated backdrop */
   .hero-portrait-wrap{position:relative;width:100%;align-self:end;display:flex;justify-content:center;transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.7,.3,1);will-change:transform;}
   .hero-portrait-aura{
-    position:absolute;left:50%;top:46%;width:240%;aspect-ratio:1/1;z-index:0;pointer-events:none;
+    position:absolute;left:50%;top:46%;width:170%;aspect-ratio:1/1;z-index:0;pointer-events:none;
     transform:translate(-50%,-50%);
-    background:radial-gradient(circle, rgba(124,58,237,.4) 0%, rgba(56,189,248,.2) 22%, transparent 42%);
-    filter:blur(48px);
+    background:radial-gradient(circle closest-side,
+      rgba(124,58,237,.4) 0%, rgba(124,58,237,.28) 20%, rgba(139,92,246,.16) 40%,
+      rgba(56,189,248,.09) 60%, rgba(56,189,248,.03) 80%, transparent 100%);
   }
   .hero-cutout{
     position:relative;z-index:1;display:block;width:auto;height:540px;max-width:none;margin:0 auto;

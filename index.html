@@ -90,42 +90,21 @@
   .hero-meta a{color:var(--muted);text-decoration:none;}
   .hero-meta a:hover{color:var(--violet);}
 
-  /* HERO STAGE - full-bleed blurred backdrop behind a dark portrait panel */
-  .hero-stage{position:relative;overflow:hidden;padding:48px 0 96px;}
-  .hero-stage-bg{
-    position:absolute;top:-15%;left:-8%;width:116%;height:130%;z-index:0;
-    object-fit:cover;object-position:center 20%;
-    filter:blur(70px) saturate(1.5) brightness(.55);
-    transform:scale(1.05);pointer-events:none;
+  /* HERO SECTION - soft aurora background, same language as other sections */
+  section.hero{position:relative;overflow:hidden;padding:88px 0 100px;}
+  section.hero::before,section.hero::after{
+    content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(100px);
   }
-  .hero-stage-tint{
-    position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(1000px 700px at 12% 8%, rgba(124,58,237,.6), transparent 60%),
-      radial-gradient(900px 700px at 88% 18%, rgba(56,189,248,.3), transparent 55%),
-      linear-gradient(180deg, rgba(13,11,20,.5) 0%, rgba(13,11,20,.72) 45%, #fff 92%);
-  }
-  .hero-stage .wrap{position:relative;z-index:1;}
+  section.hero::before{width:480px;height:480px;background:rgba(167,139,250,.38);top:-170px;right:-130px;}
+  section.hero::after{width:420px;height:420px;background:rgba(56,189,248,.24);bottom:-170px;left:-100px;}
+  section.hero .hero-grid{position:relative;z-index:1;}
 
-  /* HERO PANEL - dark rounded stage holding copy + portrait */
-  .hero-panel{
-    position:relative;overflow:hidden;border-radius:32px;padding:56px;
-    background:radial-gradient(1200px 640px at 78% 15%, #2A2440 0%, #1B1730 45%, #0D0B14 85%);
-    box-shadow:0 45px 100px -35px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05);
-  }
-  .hero-panel .badge{background:rgba(255,255,255,.10);}
-  .hero-panel h1.headline{color:#fff;}
-  .hero-panel p.subhead{color:#C7C3D6;}
-  .hero-panel .hero-meta{color:#B4AFC6;}
-  .hero-panel .hero-meta .sep{background:rgba(255,255,255,.28);}
-  .hero-panel .hero-meta a{color:#B4AFC6;}
-  .hero-panel .hero-meta a:hover{color:#fff;}
-
-  /* HERO PORTRAIT - large cinematic bleed photo */
+  /* HERO PORTRAIT - dramatic dark card around the photo only */
   .hero-portrait-wrap{position:relative;width:100%;transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.7,.3,1);will-change:transform;}
   .hero-portrait{
-    position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;
-    box-shadow:0 30px 70px -22px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.08);
+    position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;
+    background:radial-gradient(900px 500px at 78% 8%, #2A2440 0%, #1B1730 45%, #0D0B14 90%);
+    box-shadow:0 35px 80px -26px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06);
   }
   .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
   .hero-portrait::after{
@@ -163,7 +142,6 @@
   .float-3{top:44%;left:-9%;}
   .float-4{bottom:-4%;right:8%;}
   @media (max-width:900px){
-    .hero-panel{padding:28px;border-radius:24px;}
     .float-card{padding:10px 13px;}
     .float-card .num{font-size:16px;}
     .float-card .lbl{font-size:10px;}
@@ -685,6 +663,8 @@
     section#experience::after{animation:auroraDrift2 28s ease-in-out infinite;}
     section.process::before{animation:auroraDrift1 18s ease-in-out infinite;}
     section.process::after{animation:auroraDrift2 20s ease-in-out infinite;}
+    section.hero::before{animation:auroraDrift1 22s ease-in-out infinite;}
+    section.hero::after{animation:auroraDrift2 26s ease-in-out infinite;}
 
     /* hero entrance */
     .hero-anim{opacity:0;animation:fadeUp .8s cubic-bezier(.16,.8,.24,1) forwards;}
@@ -754,7 +734,7 @@
     .tabs{flex-direction:column;}
     .panel-left,.panel-right{padding:26px;}
     .cta{padding:36px 26px;border-radius:18px;}
-    .hero-stage{padding:32px 0 56px;}
+    section.hero{padding:56px 0 64px;}
     .section, section.stats, section.process{padding:56px 0;}
     .tl-idx{display:none;}
   }
@@ -778,20 +758,17 @@
 
 <main id="top">
 
-  <section class="hero-stage">
-    <img class="hero-stage-bg" alt="" aria-hidden="true">
-    <div class="hero-stage-tint"></div>
+  <section class="hero">
     <div class="wrap">
-    <div class="hero-panel">
     <div class="hero-grid">
-      <div class="hero-copy">
+      <div>
         <span class="badge hero-anim d1"><span class="badge-text">★ Client Success &amp; Partnership Specialist</span></span>
         <h1 class="headline hero-anim d2">I turn business relationships into <span class="accent">lasting partnerships.</span></h1>
         <p class="subhead hero-anim d3">4+ years in B2B relationship management, partnership development and cross-functional collaboration - with an AI-forward approach to research, communication and account growth.</p>
         <div class="hero-actions hero-anim d4">
           <a class="btn btn-violet" href="#experience">Explore my work →</a>
-          <a class="btn btn-ghost-light" href="mailto:soniasultanatulona@gmail.com?subject=Let%27s%20talk">Book a call</a>
-          <a class="btn btn-ghost-light" href="https://www.linkedin.com/in/soniasultanatulona/" target="_blank" rel="noopener">LinkedIn →</a>
+          <a class="btn btn-ghost" href="mailto:soniasultanatulona@gmail.com?subject=Let%27s%20talk">Book a call</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/soniasultanatulona/" target="_blank" rel="noopener">LinkedIn →</a>
         </div>
         <div class="hero-meta hero-anim d5">
           <span>📍 Dhaka, Bangladesh</span>
@@ -811,7 +788,6 @@
         <div class="float-card float-3"><div class="num">95%</div><div class="lbl">Partner Retention Rate</div></div>
         <div class="float-card float-4"><div class="num">15+</div><div class="lbl">Core Skills</div></div>
       </div>
-    </div>
     </div>
     </div>
   </section>
@@ -1158,13 +1134,6 @@
 
     playFill(tabBtns[current]);
     restart();
-  })();
-
-  /* hero stage: clone the portrait into the blurred full-bleed backdrop */
-  (function(){
-    const bg = document.querySelector('.hero-stage-bg');
-    const photo = document.querySelector('.hero-portrait img');
-    if(bg && photo) bg.src = photo.getAttribute('src');
   })();
 
   /* hero portrait: cursor-follow parallax tilt */
